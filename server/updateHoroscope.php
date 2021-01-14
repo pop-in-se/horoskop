@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $myHoroscope = getHoroscope($_PUT["savedDate"]);
 
     if (isset($_SESSION["horoscope"])) {
-        if (($myHoroscope != "no date specified") && ($myHoroscope != "No horoscope found"))
+        if (($myHoroscope != "Skriv in ett giltigt datum.") && ($myHoroscope != "Inget horoskop hittades"))
         {
             $_SESSION["horoscope"] = $myHoroscope;
             echo json_encode(true);
