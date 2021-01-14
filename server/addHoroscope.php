@@ -1,38 +1,21 @@
 <?php
-   
-   // for using $_SESSION in this file
-   session_start();
 
-$monthInput = $_POST["monthInput"];
-$dayInput = $_POST["dayInput"];
+session_start();
 
-   // check if a request has been made
-   if(isset($_SERVER["REQUEST_METHOD"])) {
+require 'horoscopeArray.php';
 
-
-         
-      } if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-         // kolla om månad och dag finns i body
-         if(isset($_POST["monthInput"], $_POST["dayInput"])) {
-
-            // spara postnamn
-            $_SESSION["monthInput"] = serialize($_POST["monthInput"]);
-            $_SESSION["dayInput"] = serialize($_POST["dayInput"]);
-            
-            
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $myHoroscope = getHoroscope($_POST["savedDate"]);
+    
+    if (isset($_SESSION["horoscope"])) {
+        echo json_encode(false);
+    } else {
+        if (($myHoroscope != "Skriv in ett giltigt datum") && ($myHoroscope != "Inget horoskop hittades"))
+        {
+            $_SESSION["horoscope"] = $myHoroscope;
             echo json_encode(true);
-            exit;
-
-         } else {
-            // kasta fel
-            throw new Exception("No date found", 500);
-         }
-
-      } else {
-         throw new Exception("Not a valid request method", 405);
+        }
     }
-   
-
+} 
 
 ?>

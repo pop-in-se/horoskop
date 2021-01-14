@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horoskop</title>
+    <title>Kolla ditt horoskop</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="logic.js"></script>
 </head>
-<body>
-    <main>
-    <h2>Vilket stjärntecken är du?</h2> 
-        <p>Skriv in din födesledag</p> 
 
-    <p>Månad:</p>
-        <input class="date" type="text" id="month" min="1" max="12" >
-    <p>Dag:</p>
-        <input class="date" type="text" id="day" min="1" max="31">
-        
-        <button id="saveBtn">Spara datum</button>
-        <button id="getBtn">Visa horoskop</button>
-        <button id="deleteBtn" href="deleteHoroscope.php">Rensa</button>
-        <button onclick="getHoroscope()">Javascript svaret</button>
-
-    <h2 id="Output"></h2>
+<body onload="initSite()">
+<main>
+    <h1>Vilket stjärntecken är jag?</h1> 
+    <p>Skriv in din födesledag</p>
+<div>
+    <form>
+        <input id="dateInput" type="date" name="savedDate" value=""><br>
+        <input class="button" id="saveBtn" type="button" value="Visa horoskop">
+        <input class="button" id="getBtn" type="button" value="Uppdatera horoskop">
+        <input class="button" id="deleteBtn" type="button" value="Rensa" /><br>
+    </form>
+</div> 
+<h2 id="output"></h2>
+    
 </main>
-
 </body>
+
 </html>
